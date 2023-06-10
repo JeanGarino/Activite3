@@ -85,13 +85,11 @@ while (it.hasNext()) {
       throw new ElementInterditException("ElementInterditException");
    }
    if (isValeurInitiale(x, y)) {
-      throw new ValeurInitialeModificationException(
-        "ValeurInitialeModificationException setValue");
+      throw new ValeurInitialeModificationException("ValeurInitialeModificationException setValue");
    }
 
    if (!isPossible(x, y, value)) {
-      throw new ValeurImpossibleException(
-        "caanot have ValeurImpossibleException setValue ");
+      throw new ValeurImpossibleException("caanot have ValeurImpossibleException setValue ");
    }
 
 this.view[x][y] = value2;
