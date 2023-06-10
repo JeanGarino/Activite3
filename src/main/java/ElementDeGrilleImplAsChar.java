@@ -9,6 +9,7 @@ public class ElementDeGrilleImplAsChar implements ElementDeGrille {
 private char valeur;
 /**
 *constructeur de la classe.
+*@param valeur2 passé en paramettre
 */
 ElementDeGrilleImplAsChar(final char valeur2) {
 this.valeur = valeur2;
