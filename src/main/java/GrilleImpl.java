@@ -58,12 +58,15 @@ return this.dimension;
 }
 
 @Override
-public final void setValue(final int x, final int y, final ElementDeGrille value) throws HorsBornesException, ValeurImpossibleException, ElementInterditException, ValeurInitialeModificationException {
+public final void setValue(final int x, final int y, 
+final ElementDeGrille value) throws HorsBornesException, 
+ValeurImpossibleException, 
+ElementInterditException, ValeurInitialeModificationException {
 
 ElementDeGrilleImplAsChar value2 = (ElementDeGrilleImplAsChar) value;
 
 if (x >= this.dimension || y >= this.dimension) {
-      throw new HorsBornesException("HorsBornesException setValue  ");
+      throw new HorsBornesException("HorsBornesException");
    }
 
 boolean t = true;
@@ -79,14 +82,16 @@ while (it.hasNext()) {
 
 
    if (t) {
-      throw new ElementInterditException("caanot have ElementInterditException setValue  ");
+      throw new ElementInterditException("ElementInterditException");
    }
    if (isValeurInitiale(x, y)) {
-      throw new ValeurInitialeModificationException("caanot have ValeurInitialeModificationException setValue ");
+      throw new ValeurInitialeModificationException(
+        "ValeurInitialeModificationException setValue");
    }
 
    if (!isPossible(x, y, value)) {
-      throw new ValeurImpossibleException("caanot have ValeurImpossibleException setValue ");
+      throw new ValeurImpossibleException(
+        "caanot have ValeurImpossibleException setValue ");
    }
 
 this.view[x][y] = value2;
@@ -95,10 +100,11 @@ this.viewinit[x][y] = value2;
 
 
 @Override
-public final ElementDeGrille getValue(final int x, final int y) throws HorsBornesException {
+public final ElementDeGrille getValue(final int x, 
+final int y) throws HorsBornesException {
 
    if (x >= this.dimension || y >= this.dimension) {
-      throw new HorsBornesException("caanot have HorsBornesException getValue ");
+      throw new HorsBornesException("HorsBornesException");
    }
 return this.view[x][y];
 }
@@ -120,14 +126,15 @@ return r;
 
 
 @Override
-public final boolean isPossible(final int x, final int y, final ElementDeGrille value)
+public final boolean isPossible(final int x, final int y,
+ final ElementDeGrille value)
           throws HorsBornesException, ElementInterditException {
 boolean r = true;
 
 ElementDeGrilleImplAsChar value2 = (ElementDeGrilleImplAsChar) value;
 
    if (x >= this.dimension || y >= this.dimension) {
-      throw new HorsBornesException("caanot have HorsBornesException isPossible ");
+      throw new HorsBornesException("HorsBornesException");
    }
 
 boolean t = true;
@@ -143,7 +150,7 @@ ElementDeGrilleImplAsChar elg;
    }
 
    if (t) {
-      throw new ElementInterditException("caanot have  ElementInterditException isPossible");
+      throw new ElementInterditException("ElementInterditException");
    }
 ElementDeGrilleImplAsChar v;
 
