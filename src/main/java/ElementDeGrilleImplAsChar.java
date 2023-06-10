@@ -3,31 +3,25 @@ package c306.sudoku;
  * @author Sébastien Choplin <sebastien.choplin@u-picardie.fr>
  */
 public class ElementDeGrilleImplAsChar implements ElementDeGrille {
+/**
+*valeur de la case.
+*/
 private char valeur;
-private int x;
-private int y;
-public final void setValeur(final char val) {
-   this.valeur = val;
+/**
+*constructeur de la classe.
+*/
+ElementDeGrilleImplAsChar(final char valeur2) {
+this.valeur = valeur2;
+
 }
 
+/**
+*retourne la valeur.
+*@return valeur
+*/
 public final char getValeur() {
 return this.valeur;
 }
 
-public final void setX(int x){
-	this.x=x;
-}
-public final void setY(int y){
-this.y=y;		
-}
-
-public final int getX(){
-	
-return this.x;}
-
-public final int getY(){
-
-	
-return this.y;}
 
 }

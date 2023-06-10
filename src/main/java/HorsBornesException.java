@@ -7,7 +7,7 @@ public class HorsBornesException extends Exception {
 *Constructeur de la classe .
 *@param message d'affichage
 */
-public HorsBornesException(String message) {
+HorsBornesException(final String message) {
 
 super(message);
 }

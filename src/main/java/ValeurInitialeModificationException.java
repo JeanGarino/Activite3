@@ -7,7 +7,7 @@ public class ValeurInitialeModificationException extends Exception {
 *Constructeur de la classe .
 *@param message d'affichage
 */
-public ValeurInitialeModificationException(String message) {
+ValeurInitialeModificationException(final String message) {
 
 super(message);
 }

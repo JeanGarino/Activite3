@@ -5,4 +5,3 @@ package c306.sudoku;
  */
 public interface ElementDeGrille {
 }
-

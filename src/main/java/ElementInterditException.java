@@ -8,7 +8,7 @@ class ElementInterditException extends Exception {
 *Constructeur de la classe .
 *@param message d'affichage
 */
-public ElementInterditException(String message) {
+ElementInterditException(final String message) {
 
 super(message);
 }

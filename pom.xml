@@ -78,6 +78,7 @@
 	<groupId>org.apache.maven.plugins</groupId>
 	<artifactId>maven-checkstyle-plugin</artifactId>
 	<version>3.0.0</version>
+   
       </plugin>
 
     </plugins>
@@ -109,6 +110,10 @@
             </reports>
           </reportSet>
         </reportSets>
+         <configuration>
+      <suppressionsLocation>checkstyle-suppressions.xml</suppressionsLocation>
+      <suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression>
+      </configuration>
       </plugin>
 
       <plugin><!-- pour avoir le lien au code source dans les rapports -->
