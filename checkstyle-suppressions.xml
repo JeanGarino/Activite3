@@ -2,7 +2,7 @@
 <!DOCTYPE suppressions PUBLIC "-//Puppy Crawl//DTD Suppressions 1.1//EN" "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
 <suppressions>
     <suppress checks="IndentationCheck" files="GrilleImpl.java "/>
-    <suppress checks="LineLength" files="GrilleImpl.java "/>
-    <suppress checks="PackageName" files="GrilleImpl.java "/>
+    <suppress checks="LineLengthCheck" files="GrilleImpl.java "/>
+    <suppress checks="PackageNameCheck" files="GrilleImpl.java "/>
     
 </suppressions>
