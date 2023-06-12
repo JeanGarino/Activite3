@@ -111,10 +111,19 @@
           </reportSet>
         </reportSets>
          <configuration>
+         <consoleOutput>true</consoleOutput>
+        <encoding>UTF-8</encoding>
          <configLocation>checkstyle.xml</configLocation>
-      <suppressionsLocation>${maven.multiModuleProjectDirectory}/checkstyle-suppressions.xml</suppressionsLocation>
+      <suppressionsLocation>checkstyle-suppressions.xml</suppressionsLocation>
       <suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression>
       </configuration>
+      <executions>
+        <execution>
+            <goals>
+                <goal>check</goal>
+            </goals>
+        </execution>
+    </executions>
       </plugin>
 
       <plugin><!-- pour avoir le lien au code source dans les rapports -->
