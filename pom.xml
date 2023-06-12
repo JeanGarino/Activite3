@@ -117,13 +117,6 @@
       <suppressionsLocation>checkstyle-suppressions.xml</suppressionsLocation>
       <suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression>
       </configuration>
-      <executions>
-        <execution>
-            <goals>
-                <goal>check</goal>
-            </goals>
-        </execution>
-    </executions>
       </plugin>
 
       <plugin><!-- pour avoir le lien au code source dans les rapports -->
