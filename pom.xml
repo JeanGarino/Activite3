@@ -111,8 +111,8 @@
           </reportSet>
         </reportSets>
          <configuration>
-       <configLocation>${project.basedir}/checkstyle.xml</configLocation>
-        <suppressionsLocation>${project.basedir}/checkstyle-suppressions.xml</suppressionsLocation>
+       <configLocation>/checkstyle.xml</configLocation>
+        <suppressionsLocation>/checkstyle-suppressions.xml</suppressionsLocation>
       <suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression>
       </configuration>
       </plugin>
