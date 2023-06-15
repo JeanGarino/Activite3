@@ -2,7 +2,7 @@ package c306.sudoku;
 
 import java.util.Set;
 import java.util.HashSet;
-import java.util.Iterator;
+
 /**
  * Interface de grille de sudoku. Chaque case d'une Grille
  peut contenir un ElementDeGrille ou null si aucun élément n'est placé.
@@ -21,11 +21,9 @@ private Set<ElementDeGrille> elements;
 /**
 *tableau contenant les elements de la grille.
 */
-private ElementDeGrille[][] view;
+private ElementDeGrille[][] table;
 /**
-*tableau contenant les elements initiales de la grille.
-*/
-private ElementDeGrille[][] viewinit;
+
 /**
 *dimension du tableau.
 */
@@ -41,8 +39,8 @@ GrilleImpl(final ElementDeGrille[] elements2) {
       this.elements.add(elements2[i]);
    }
    this.dimension = elements2.length;
-this.view = new ElementDeGrille[this.dimension][this.dimension];
-this.viewinit = new ElementDeGrille[this.dimension][this.dimension];
+this.table = new ElementDeGrille[this.dimension][this.dimension];
+
 
 }
 
@@ -66,31 +64,21 @@ if (x >= this.dimension || y >= this.dimension) {
       throw new HorsBornesException("HorsBornesException");
    }
 
-boolean t = true;
-Iterator it = this.elements.iterator();
-ElementDeGrilleImplAsChar elg;
-while (it.hasNext()) {
-   elg = (ElementDeGrilleImplAsChar) it.next();
-   if (elg.equals(value2)) {
-      t = false;
-   }
 
+
+   if (value2 != null && !(isPossible(x, y, value2))) {
+      throw new ValeurImpossibleException("ValeurImpossibleException");
 }
-
-
-   if (t) {
-      throw new ElementInterditException("ElementInterditException");
-   }
-   if (isValeurInitiale(x, y)) {
-      throw new ValeurInitialeModificationException("ValeurInitialeModificationException");
+  if (isValeurInitiale(x, y)) {
+   throw new ValeurInitialeModificationException("ValeurInitialeModificationException");
    }
 
-   if (!isPossible(x, y, value)) {
-      throw new ValeurImpossibleException("caanot have ValeurImpossibleException");
-   }
+this.table[x][y] = value2;
 
-this.view[x][y] = value2;
-this.viewinit[x][y] = value2;
+
+
+
+
 }
 
 
@@ -98,18 +86,21 @@ this.viewinit[x][y] = value2;
 public final ElementDeGrille getValue(final int x, final int y) throws HorsBornesException {
 
    if (x >= this.dimension || y >= this.dimension) {
-      throw new HorsBornesException("HorsBornesException");
+      throw new HorsBornesException("have HorsBornesException");
    }
-return this.view[x][y];
+return this.table[x][y];
 }
 
 @Override
 public final boolean isComplete() {
 boolean r = true;
-
+ElementDeGrilleImplAsChar v;
    for (int i = 0; i < this.dimension; i++) {
       for (int j = 0; j < this.dimension; j++) {
-         if (this.view[i][j] == null) {
+
+          v = (ElementDeGrilleImplAsChar) this.table[i][j];
+         if (v == null) {
+
             r = false;
          }
       }
@@ -120,38 +111,41 @@ return r;
 
 
 @Override
-public final boolean isPossible(final int x, final int y,
- final ElementDeGrille value)
-          throws HorsBornesException, ElementInterditException {
+public final boolean isPossible(final int x, final int y, final ElementDeGrille value) throws HorsBornesException, ElementInterditException {
 boolean r = true;
 
 ElementDeGrilleImplAsChar value2 = (ElementDeGrilleImplAsChar) value;
 
+
+
    if (x >= this.dimension || y >= this.dimension) {
       throw new HorsBornesException("HorsBornesException");
    }
-
+if (value2 != null) {
+    char valeur2 = value2.getValeur();
 boolean t = true;
-Iterator it = this.elements.iterator();
 
-ElementDeGrilleImplAsChar elg;
+Set<ElementDeGrille> liste = this.elements;
 
-   while (it.hasNext()) {
-      elg = (ElementDeGrilleImplAsChar) it.next();
-      if (elg.equals(value2)) {
-         t = false;
-      }
+for (ElementDeGrille elg: liste) {
+
+   if (((ElementDeGrilleImplAsChar) elg).getValeur() == valeur2) {
+      t = false;
    }
+
+}
 
    if (t) {
       throw new ElementInterditException("ElementInterditException");
    }
+
+
 ElementDeGrilleImplAsChar v;
 
    for (int i = 0; i < this.dimension; i++) {
       for (int j = 0; j < this.dimension; j++) {
-         v = (ElementDeGrilleImplAsChar) this.view[i][j];
-         if (v != null && v.getValeur() == value2.getValeur() && i == x) {
+         v = (ElementDeGrilleImplAsChar) this.table[i][j];
+         if (v != null && v.getValeur() == valeur2 && i == x) {
             r = false;
          }
       }
@@ -159,24 +153,28 @@ ElementDeGrilleImplAsChar v;
 
    for (int i = 0; i < this.dimension; i++) {
       for (int j = 0; j < this.dimension; j++) {
-         v = (ElementDeGrilleImplAsChar) this.view[i][j];
-         if (v != null && v.getValeur() == value2.getValeur() && j == y) {
+         v = (ElementDeGrilleImplAsChar) this.table[i][j];
+         if (v != null && v.getValeur() == valeur2 && j == y) {
             r = false;
          }
       }
    }
+
 int k = (int) Math.sqrt(this.dimension);
 int ci = x - x % k;
 int cj = y - y % k;
 
+
+
    for (int i = 0; i < k; i++) {
       for (int j = 0; j < k; j++) {
-         v = (ElementDeGrilleImplAsChar) this.view[ci + i][cj + j];
-         if (v != null && v.getValeur() == value2.getValeur()) {
+         v = (ElementDeGrilleImplAsChar) this.table[ci + i][cj + j];
+         if (v != null && v.getValeur() == valeur2) {
             r = false;
          }
       }
    }
+}
 return r;
 }
 
@@ -184,9 +182,17 @@ return r;
 @Override
 public  final boolean isValeurInitiale(final int x, final int y) {
 boolean r = false;
-if (this.viewinit[x][y] != null) {
-   r = true;
+
+
+Set<ElementDeGrille> liste = this.elements;
+
+for (ElementDeGrille elg : liste) {
+
+   if (elg.equals(this.table[x][y])) {
+      r = true;
+   }
 }
+
 return r;
 }
 

@@ -23,7 +23,7 @@ public interface Grille {
     int getDimension();
 
     /**
-     * Affecte une valeur dans une case de la grille, ou null pour 'vider' la case
+     * Affecte une valeur dans une case de la grille, ou null pour 'vider' la case.
      *
      * @param x     position x dans la grille
      * @param y     position y dans la grille
@@ -72,6 +72,6 @@ public interface Grille {
      * @param y     position y dans la grille
      * @return true si la case x,y contient une valeur initiale de la grille.
      */
-    boolean isValeurInitiale(int x,int y);
+    boolean isValeurInitiale(int x, int y);
 
 }
