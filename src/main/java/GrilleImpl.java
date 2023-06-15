@@ -58,10 +58,7 @@ return this.dimension;
 }
 
 @Override
-public final void setValue(final int x, final int y, 
-final ElementDeGrille value) throws HorsBornesException, 
-ValeurImpossibleException, 
-ElementInterditException, ValeurInitialeModificationException {
+public final void setValue(final int x, final int y, final ElementDeGrille value) throws HorsBornesException, ValeurImpossibleException, ElementInterditException, ValeurInitialeModificationException {
 
 ElementDeGrilleImplAsChar value2 = (ElementDeGrilleImplAsChar) value;
 
