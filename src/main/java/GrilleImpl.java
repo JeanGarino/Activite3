@@ -95,8 +95,7 @@ this.viewinit[x][y] = value2;
 
 
 @Override
-public final ElementDeGrille getValue(final int x, 
-final int y) throws HorsBornesException {
+public final ElementDeGrille getValue(final int x, final int y) throws HorsBornesException {
 
    if (x >= this.dimension || y >= this.dimension) {
       throw new HorsBornesException("HorsBornesException");
